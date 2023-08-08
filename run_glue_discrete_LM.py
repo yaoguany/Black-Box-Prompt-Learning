@@ -609,7 +609,7 @@ def main():
                     
                     prompt_optimizer.zero_grad()
 
-                    derivative = [copy.deepcopy(-1 / self.sample_probs) for _ in range(self.hparams.pge_avg_samples)]
+                    derivative = copy.deepcopy([-1 / prompts_probs]) * args.sample_size
                     for k, prompts_discrete_indices in enumerate(prompts_discrete_indices_list):
                         for i in range(prompt_length):
                             derivative[k][i][prompts_discrete_indices[i]] *= -1
