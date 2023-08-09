@@ -2,6 +2,7 @@ import argparse
 import logging
 import torch
 import math
+import copy
 import os
 import random
 import datasets
@@ -647,7 +648,7 @@ def main():
                     
                     prompt_optimizer.zero_grad()
 
-                    derivative = [-1 / prompts_probs] * args.sample_size
+                    derivative = copy.deepcopy([-1 / prompts_probs]) * args.sample_size
                     for k, prompts_discrete_indices in enumerate(prompts_discrete_indices_list):
                         for i in range(prompt_length):
                             derivative[k][i][prompts_discrete_indices[i]] *= -1
