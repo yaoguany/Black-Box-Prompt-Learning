@@ -9,6 +9,7 @@ from datasets import load_dataset, load_metric
 from torch.utils.data import DataLoader
 from tqdm.auto import tqdm
 import transformers
+import copy
 from accelerate import Accelerator
 from torch.optim import Adam, AdamW
 from transformers import (
